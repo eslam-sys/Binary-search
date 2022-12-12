@@ -24,3 +24,16 @@ MSG10 DB "NUMBER OF OCURRENCES IS ","$"
 INDEX DB 0
 SIZE DB 0
 OCC DB 0
+
+
+
+#Enter arr size
+
+CALL ENTER ; call function to inter the size
+CMP AL,0
+JE  RE
+CALL NEWLINE
+MOV SIZE,AL
+
+
+MOV CL,0 
