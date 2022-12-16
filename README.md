@@ -37,3 +37,24 @@ MOV SIZE,AL
 
 
 MOV CL,0 
+
+
+
+//<<START ENTER LINE FUNCTION>>//
+
+
+loop_read_number:  MOV AH,01H  
+                    
+                   INT 21H    
+        
+                   CMP AL,0DH      ;compare AL with ASCII code of ENTER
+                   JE numbercomplete
+
+                   INC CX   
+
+                   CMP AL,30H      ;compare AL with ASCII code of zero 
+
+                   JL invalidcharacter 
+
+                   CMP AL,39h      ;compare AL with ASCII code of 9
+                   JG invalidcharacter 
