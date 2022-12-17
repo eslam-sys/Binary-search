@@ -100,3 +100,34 @@ loop_read_number:  MOV AH,01H
 
                    CMP AL,39h      ;compare AL with ASCII code of 9
                    JG invalidcharacter 
+
+
+
+
+//START PRINT LINE FUNCTION *******************************************// 
+PRINT PROC     ;procedure to print a number     
+     
+    ;initialize count
+    PUSH AX
+    PUSH BX
+    PUSH CX
+    PUSH DX
+    MOV CX,0
+    MOV DX,0
+    label1:
+        
+        CMP AX,0         ; if ax is zero
+        JE print1     
+        
+        MOV BX,10        ;initialize bx to 10      
+         
+        ; extract the last digit
+        DIV BX       ;put the result at AX and the remendier to DX                 
+         
+        PUSH DX      ;push it in the stack      
+        
+        INC CX       ;increment the count      
+         
+        XOR DX,DX    ;set dx to 0
+        JMP label1
+    print1:
