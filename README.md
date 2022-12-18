@@ -108,3 +108,89 @@ PRINT PROC     ;procedure to print a number
         XOR DX,DX    ;set dx to 0
         JMP label1
     print1:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NEWLINE PROC ; printing a newline 
+  PUSH AX
+  PUSH DX 
+  MOV AH,02h
+  MOV DL,0ah 
+  INT 21h
+  MOV AH,02h  
+  MOV DL,0dh
+  INT 21h  
+  POP DX 
+  POP AX
+RET 
+NEWLINE ENDP
+
+P_END: ; end of the program
+.EXIT
+END
