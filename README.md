@@ -1,5 +1,10 @@
 # Binary-search-project
-
+.CODE
+.STARTUP    
+MOV AX,@DATA ;intialize the data segement
+MOV DS,AX
+STR:
+MOV number,0
 .MODEL SMALL
 .STACK
 .DATA
