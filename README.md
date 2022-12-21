@@ -45,11 +45,14 @@ LEA DX,WEL ; display welcome messege
 MOV AH,09H
 INT 21H ;fetch the instruction in 21h addrees
 JMP BEGIN
-
-
-
-
-
+RE:
+LEA DX,MSG9 ; display welcome messege
+MOV AH,09H
+INT 21H ;fetch the instruction in 21h addrees
+BEGIN:
+LEA DX,MSG3 ; display welcome messege
+MOV AH,09H
+INT 21H ;fetch the instruction in 21h addrees
 
 #Enter arr size
 
