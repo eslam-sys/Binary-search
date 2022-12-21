@@ -110,7 +110,18 @@ PRINT PROC     ;procedure to print a number
         JMP label1
     print1:
 
-
+ ;check if count
+        ;is greater than zero
+        CMP CX,0
+        JE exit
+         
+        ;pop the top of stack
+        POP DX
+         
+        ;add 48 = 30h so that it
+        ;represents the ASCII
+        ;value of digits
+        ADD DX,30h
 
 
 
