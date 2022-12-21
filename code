@@ -93,9 +93,27 @@ loop_read_number:  MOV AH,01H
                                 
                    MOV BL,AL   
 
+                   MOV AL,number  
+                   MUL numberplace  
+             
+                   MOV BH,0       
+                   MOV AH,0
+                   ADD AX,BX
+                   CMP AH,0
+                   JNE overflow
+ 
+          
+
+                   MOV number,AL
+                   CMP number,0
+                   JL overflow
+        
+                   JMP loop_read_number
+overflow:
 
 
-//START PRINT LINE FUNCTION *******************************************// 
+
+//<<START PRINT LINE FUNCTION>>// 
 PRINT PROC     ;procedure to print a number     
 
     ;initialize count
@@ -136,37 +154,6 @@ PRINT PROC     ;procedure to print a number
         ;represents the ASCII
         ;value of digits
         ADD DX,30h
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
