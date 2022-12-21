@@ -90,6 +90,13 @@ loop_read_number:  MOV AH,01H
                    JG invalidcharacter 
  
                    SUB AL,30h       ;subtract ASCII code of zero from AL
+                   MOV BL,SIZE     ;mov the size of the array to BL
+DEC BL           ; decrement the BL by 1
+
+MOV BH,00
+MOV CL,KEY      ;put the key at CL
+MOV CH,0
+MOV SI,CX
                                 
                    MOV BL,AL   
 
