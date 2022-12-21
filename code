@@ -108,9 +108,10 @@ PRINT PROC     ;procedure to print a number
 
         XOR DX,DX    ;set dx to 0
         JMP label1
+        
     print1:
 
- ;check if count
+        ;check if count
         ;is greater than zero
         CMP CX,0
         JE exit
