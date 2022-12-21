@@ -63,6 +63,16 @@ MOV CL,0
 //<<START ENTER LINE FUNCTION>>//
 
 
+    ENTER PROC NEAR
+        PUSH AX
+        PUSH BX
+        PUSH DX
+        PUSH CX 
+        MOV CX,0
+        loop_number_main:
+        CALL NEWLINE
+        
+        MOV number,0    
 loop_read_number:  MOV AH,01H  
 
                    INT 21H    
@@ -78,7 +88,10 @@ loop_read_number:  MOV AH,01H
 
                    CMP AL,39h      ;compare AL with ASCII code of 9
                    JG invalidcharacter 
-
+ 
+                   SUB AL,30h       ;subtract ASCII code of zero from AL
+                                
+                   MOV BL,AL   
 
 
 
