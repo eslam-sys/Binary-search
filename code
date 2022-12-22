@@ -56,8 +56,6 @@ CALL NEWLINE
 MOV SIZE,AL
 
 
-MOV CL,0 
-
 
 
 //<<START ENTER LINE FUNCTION>>//
@@ -75,24 +73,7 @@ MOV CL,0
         MOV number,0    
 loop_read_number:  MOV AH,01H  
 
-                   INT 21H    
-
-                   CMP AL,0DH      ;compare AL with ASCII code of ENTER
-                   JE numbercomplete
-
-                   INC CX   
-
-                   CMP AL,30H      ;compare AL with ASCII code of zero 
-
-                   JL invalidcharacter 
-
-                   CMP AL,39h      ;compare AL with ASCII code of 9
-                   JG invalidcharacter 
- 
-                   SUB AL,30h       ;subtract ASCII code of zero from AL
-                   MOV BL,SIZE     ;mov the size of the array to BL
-DEC BL           ; decrement the BL by 1
-
+                   INT 21H  
 MOV BH,00
 MOV CL,KEY      ;put the key at CL
 MOV CH,0
