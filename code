@@ -78,6 +78,10 @@ MOV BH,00
 MOV CL,KEY      ;put the key at CL
 MOV CH,0
 MOV SI,CX
+MOV AL,OCUR[SI] 
+MOV OCC,AL
+AGAIN:CMP BH,BL ;binary search
+JA FAIL         ;jump to fail
                                 
                    MOV BL,AL   
 
