@@ -146,36 +146,22 @@ PRINT PROC     ;procedure to print a number
         ;represents the ASCII
         ;value of digits
         ADD DX,30h
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        ;interrupt to print a
+        ;character
+        MOV AH,02h
+        INT 21h
+         
+        ;decrease the count
+        DEC CX
+        JMP print1
+exit:       ;free the stack
+    POP DX
+    POP CX
+    POP BX
+    POP AX
+RET
+PRINT ENDP
 
 
 
