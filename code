@@ -19,6 +19,7 @@ MSG7 DB "NOTSORTED ENTER AGAIN $"
 MSG8 DB "Enter Key $"      
 MSG9 DB "ZERO SIZE ENTER AGAIN",13,10,"$"
 MSG10 DB "NUMBER OF OCURRENCES IS ","$"
+
 LRR DB 0   
 
 INDEX DB 0
@@ -44,6 +45,7 @@ RE:
     MOV AH,09H
     MOV DX,OFFSET MSG9 ; display zero size messege
     INT 21H ;fetch the instruction in 21h addrees
+    
 BEGIN:
     MOV AH,09H  
     MOV DX,OFFSET MSG3 ; display enter size messege
@@ -54,7 +56,8 @@ BEGIN:
     JE  RE    ; check if the size == 0   
     CALL NEWLINE
     MOV SIZE,AL
-    MOV CL,0 
+    MOV CL,0
+    
     ;array elements begin
 ARR_LOOP: 
 
@@ -66,10 +69,7 @@ ARR_LOOP:
     LEA DX,MSG4     ;display enter number msg 
     MOV AH,09H
     INT 21H
-    LEA DX,MSG4     ;display enter number msg 
-    MOV AH,09H
-    INT 21H
-
+   
     MOV AL,CL   ;mov cl to al
     INC AL      ;increment AL by 1
     MOV AH,0    ;set AH = 0
@@ -79,6 +79,7 @@ ARR_LOOP:
     LEA DX,MSG5 ;load effective address of msg5 to DX
     MOV AH,09H
     INT 21H
+    
     CALL ENTER      ;call it to enter the elements of the arr   ;000000000 
     ;al = the number entered & number = number enterd
     
@@ -104,13 +105,17 @@ ARR_LOOP:
     INC OCUR[SI]       ;increment the value of the index of the number
     
     JMP ARR_LOOP
+    
+    
     NOTSORTED:
         LEA DX,MSG7 ;load effective address to the dx
         MOV AH,09H
         INT 21H         ;fetch the instruction in 21h
         CALL NEWLINE    ;print brake line
         JMP ARR_LOOP    ;continue the loop   
-        ARR_END:
+        
+        
+ARR_END:
     ;LEA DX,MSG8      ;load effective address to the dx
     ;MOV AH,09H
     ;INT 21H          ;fetch the instruction in 21h
@@ -132,28 +137,50 @@ ARR_LOOP:
     MOV AL,OCUR[SI] 
     MOV OCC,AL 
     
-    
-    ARR_END:
-    ;LEA DX,MSG8      ;load effective address to the dx
-    ;MOV AH,09H
-    ;INT 21H          ;fetch the instruction in 21h
-    ;CALL ENTER       ;call it to enter the elements of the arr
-    ;CALL NEWLINE     ;print brake line                      
-    
-    MOV KEY,AL       ;put the key that enters in al to key  
-    
-    ;array elements end
-         
- 
-    MOV BL,SIZE     ;mov the size of the array to BL
-    DEC BL           ; decrement the BL by 1
+    AGAIN:
+    CMP BH,BL ;binary search           ;erorororororororroro0.0..1312156 when enter 0 as a key
+    JA FAIL         ;jump to fail
+    MOV AL,BH
+    ADD AL,BL
+    SHR AL,1  ;divide by 2
+    MOV AH,00
+    MOV SI,AX
 
-    MOV BH,00
-    MOV CL,KEY      ;put the key at CL
-    MOV CH,00
-    MOV SI,CX
-    MOV AL,OCUR[SI] 
-    MOV OCC,A    
+    CMP CL,ARR[SI]  ;compare the SIth element with CL
+
+    JAE BIG
+     
+    CMP AL,BH
+    JE FAIL           ;0000000000000000000
+     
+    DEC AL
+    
+    MOV BL,AL              ; if the key smaller than the middel value
+    JMP AGAIN
+
+BIG:
+    JE SUCCESS
+    INC AL
+    MOV BH,AL
+    JMP AGAIN
+    
+SUCCESS:
+    MOV SOLVE,AL 
+    
+    LEA DX,MSG1
+    MOV AH,09H
+    INT 21H          ;fetch the instruction in 21h 
+    
+    MOV AL,SOLVE 
+    INC AL           ;increment the AL by 1
+    MOV AH,0      
+    
+    CALL PRINT 
+    
+    CALL NEWLINE
+    LEA DX,MSG10
+    MOV AH,09H
+    INT 21H    
     
     MOV AL,OCC  
     MOV AH,0 
@@ -162,7 +189,52 @@ ARR_LOOP:
  
 
     JMP LR        ;jump to the end of the program
+
+FAIL:
+    LEA DX,MSG2     ;key not found
+    MOV AH,09H
+    INT 21H
     
+    JMP LR
+     
+
+
+
+
+
+
+
+
+LR:
+
+    LEA DX,MSG8     
+    MOV AH,09H
+    INT 21H 
+     
+    MOV LRR,1
+    
+    
+    
+    
+    
+    CALL NEWLINE     ;print brake line
+    
+     
+    CALL ENTER     ;print brake line 
+    
+    
+    
+        
+        
+          
+        
+           
+        JMP  ARR_END
+    
+    
+    
+    
+   
     
         
         
@@ -208,7 +280,8 @@ loop_read_number1:
         MOV BL,AL   
 
         MOV AL,number
-        MUL numberplace  
+        MUL numberplace 
+        JO overflow
         MOV BH,0       
         MOV AH,0
         ADD AX,BX
