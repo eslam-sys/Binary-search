@@ -2,7 +2,7 @@
 .STACK
 .DATA
 ARR DB 255 DUP(?);define array with maximmum size 255 
-OCUR DB 255 DUP(0)
+OCUR DB 256 DUP(0)
 number DB 0
 SOLVE DB 0
 numberplace db 10
