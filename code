@@ -362,7 +362,6 @@ label1:
         ;character
         MOV AH,02h
         INT 21h
-        CALL NEWLINE 
         ;decrease the count
         DEC CX
         JMP print1
@@ -371,6 +370,7 @@ exit:       ;free the stack
     POP CX
     POP BX
     POP AX
+     CALL NEWLINE
 RET
 PRINT ENDP
                                                              ;//<<END PRINT LINE FUNCTION>>// 
