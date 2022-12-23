@@ -1,8 +1,8 @@
 .MODEL SMALL
 .STACK
 .DATA
-ARR DB 127 DUP(?);define array with maximmum size 127 
-OCUR DB 128 DUP(0)
+ARR DB 255 DUP(?);define array with maximmum size 255 
+OCUR DB 255 DUP(0)
 number DB 0
 SOLVE DB 0
 numberplace db 10
@@ -125,8 +125,7 @@ PRINT PROC     ;procedure to print a number
     PUSH DX
     MOV CX,0
     MOV DX,0
-    label1:
-
+label1:
         CMP AX,0         ; if ax is zero
         JE print1     
 
