@@ -19,6 +19,8 @@ MSG7 DB "NOTSORTED ENTER AGAIN $"
 MSG8 DB "Enter Key $"      
 MSG9 DB "ZERO SIZE ENTER AGAIN",13,10,"$"
 MSG10 DB "NUMBER OF OCURRENCES IS ","$"
+LRR DB 0   
+
 INDEX DB 0
 SIZE DB 0
 OCC DB 0   
@@ -32,18 +34,19 @@ MOV AX,@DATA ;intialize the data segement
 MOV DS,AX
 STR:
     MOV number,0    
-    LEA DX,WEL ; display welcome messege
-    MOV AH,09H
+    MOV AH,09H ; print string 
+    MOV DX,OFFSET WEL ; display welcome messege
     INT 21H ;fetch the instruction in 21h addrees
+    
     JMP BEGIN
 
 RE:
-    LEA DX,MSG9    ; display welcome messege
     MOV AH,09H
+    MOV DX,OFFSET MSG9 ; display zero size messege
     INT 21H ;fetch the instruction in 21h addrees
 BEGIN:
-    LEA DX,MSG3    ; display welcome messege
-    MOV AH,09H
+    MOV AH,09H  
+    MOV DX,OFFSET MSG3 ; display enter size messege
     INT 21H ;fetch the instruction in 21h addrees
 
     CALL ENTER    ; call function to inter the size
@@ -51,6 +54,7 @@ BEGIN:
     JE  RE    ; check if the size == 0   
     CALL NEWLINE
     MOV SIZE,AL
+    MOV CL,0 
 
 
 
