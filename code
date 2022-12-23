@@ -216,8 +216,6 @@ loop_read_number1:
         JNE overflow
  
         MOV number,AL
-        CMP number,0
-        JL overflow
         
         JMP loop_read_number
 
