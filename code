@@ -58,7 +58,7 @@ MOV SIZE,AL
 
 
 
-//<<START ENTER LINE FUNCTION>>//
+                                                            ;//<<START ENTER LINE FUNCTION>>//
 
 
     ENTER PROC NEAR
@@ -73,8 +73,12 @@ MOV SIZE,AL
         MOV number,0    
 loop_read_number:  
         MOV AH,01H  
-        INT 21H 
-        
+        INT 21H
+        CMP LRR,1
+        JNE loop_read_number1
+        CMP AL,1BH
+        JE P_END
+loop_read_number1:        
         CMP AL,0DH      ;compare AL with ASCII code of ENTER
         JE numbercomplete
         
@@ -129,10 +133,11 @@ numbercomplete:
 RET
 ENTER ENDP
 
-//<<END ENTER LINE FUNCTION>>//
+                                                             ;//<<END ENTER LINE FUNCTION>>//
 
 
-//<<START PRINT LINE FUNCTION>>// 
+
+                                                             ;//<<START PRINT LINE FUNCTION>>// 
 PRINT PROC     ;procedure to print a number     
 
     ;initialize count
@@ -188,12 +193,11 @@ exit:       ;free the stack
     POP AX
 RET
 PRINT ENDP
+                                                             ;//<<END PRINT LINE FUNCTION>>// 
 
 
 
-
-
-
+                                                             ;//<<START NEW LINE FUNCTION>>// 
 NEWLINE PROC ; printing a newline 
   PUSH AX
   PUSH DX 
@@ -207,7 +211,9 @@ NEWLINE PROC ; printing a newline
   POP AX
 RET 
 NEWLINE ENDP
-
+                                                             ;//<<END PRINT LINE FUNCTION>>// 
+                                                             
+                                                             
 P_END: ; end of the program
 .EXIT
 END
