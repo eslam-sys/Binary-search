@@ -28,4 +28,9 @@ Let input_array = {12, 18, 23, 25, 29, 32, 35, 40, 58, 66}
 ## Bugs we faced
 - Input size was taking from 0 to 9 only (one digit)
 - '-' or '+' signs was taken as array size without prompting errors.
+## Disadvantages:
+- This algorithm does not work if the input_array is not in sorted order.
+- It employs recursive approach which requires more stack space.
+- Programming binary search algorithm is error prone and difficult.
+- The interaction of binary search with memory hierarchy i.e. caching is poor.
 
