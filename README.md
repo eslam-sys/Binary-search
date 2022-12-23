@@ -13,7 +13,7 @@ The idea of binary search is to use the information that the array is sorted and
 ![](BinarySearch.png)
 # Example
 Let input_array = {12, 18, 23, 25, 29, 32, 35, 40, 58, 66}
-![](Example_1.jpeg)
+  ![](Example_1.jpeg)
 ![](Example_2.jpeg)
 ## Project Tools:
 - emu8086
