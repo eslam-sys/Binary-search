@@ -28,4 +28,4 @@ Let input_array = {12, 18, 23, 25, 29, 32, 35, 40, 58, 66}
 ## Bugs we faced
 - Input size was taking from 0 to 9 only (one digit)
 - '-' or '+' signs was taken as array size without prompting errors.
--
+
