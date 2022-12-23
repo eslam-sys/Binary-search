@@ -9,6 +9,11 @@
 # Binary-search
 Binary Search is a searching algorithm used in a sorted array by repeatedly dividing the search interval in half.
 The idea of binary search is to use the information that the array is sorted and reduce the time complexity to O(Log n). 
+## Advantages:
+- It eliminates half of the list from further searching by using the result of each comparison.
+- It indicates whether the element being searched is before or after the current position in the list.
+- This information is used to narrow the search.
+- For large lists of data, it works significantly better than linear search.
 # Binary-Search algorithm
 ![](BinarySearch.png)
 # Example
