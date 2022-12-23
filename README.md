@@ -12,7 +12,8 @@ The idea of binary search is to use the information that the array is sorted and
 # Binary-Search algorithm
 ![](BinarySearch.png)
 # Example
-
+![](Example_1.jpeg)
+![](Example_2.jpeg)
 ## Project Tools:
 - emu8086
 ## Bugs we faced
