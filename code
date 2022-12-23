@@ -104,9 +104,34 @@ loop_read_number:
         JMP loop_read_number
 
 overflow:
+        LEA DX, msg6     ;load effective address to the dx
+            MOV AH,09H       ;print the message
 
+            INT 21h
+            JMP loop_number_main
+
+invalidcharacter:
+            MOV AH,09h  
+            MOV DX,offset messageinvalidcharacter   
+            INT 21h     
+
+            JMP loop_number_main           
+
+numbercomplete:
+            CMP CX,0
+            JE loop_number_main
+            POP CX
+            POP DX
+            POP BX
+            POP AX
+            mov al,number 
+
+RET
+ENTER ENDP
 
 //<<END ENTER LINE FUNCTION>>//
+
+
 //<<START PRINT LINE FUNCTION>>// 
 PRINT PROC     ;procedure to print a number     
 
