@@ -82,6 +82,16 @@ MOV AL,OCUR[SI]
 MOV OCC,AL
 AGAIN:CMP BH,BL ;binary search
 JA FAIL         ;jump to fail
+MOV AL,BH
+ADD AL,BL
+SHR AL,1
+MOV AH,00
+MOV SI,AX
+
+CMP CL,ARR[SI]  ;compare the SIth element with CL
+
+JAE BIG
+DEC AL
                                 
                    MOV BL,AL   
 
