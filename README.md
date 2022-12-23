@@ -33,4 +33,6 @@ Let input_array = {12, 18, 23, 25, 29, 32, 35, 40, 58, 66}
 - It employs recursive approach which requires more stack space.
 - Programming binary search algorithm is error prone and difficult.
 - The interaction of binary search with memory hierarchy i.e. caching is poor.
-
+# Resources:
+Reference :
+Assembly language for x86 processors sixth edition
