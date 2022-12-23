@@ -10,7 +10,7 @@ KEY DB 0DH;the input key
 ;Messages defenitions                
 WEL DB "WELCOME TO BINARY SEARCH PROGRAM",13,10,"$"
 MSG1 DB "KEY IS FOUND AT POSITION $" 
-MSG2 DB "KEY NOT FOUND!!! $"
+MSG2 DB "KEY NOT FOUND!!!",13,10,"$"
 MSG3 DB "ENTER SIZE: $"   
 MSG4 DB "ENTER ELEMENT NUMBER  $"
 MSG5 DB "____ $"
@@ -133,7 +133,7 @@ ARR_END:
     MOV OCC,AL 
     
     AGAIN:
-    CMP BH,BL ;binary search           ;erorororororororroro0.0..1312156 when enter 0 as a key
+    CMP BH,BL ;binary search           
     JA FAIL         ;jump to fail
     MOV AL,BH
     ADD AL,BL
@@ -146,7 +146,7 @@ ARR_END:
     JAE BIG
      
     CMP AL,BH
-    JE FAIL           ;0000000000000000000
+    JE FAIL           
      
     DEC AL
     
@@ -189,7 +189,7 @@ FAIL:
     LEA DX,MSG2     ;key not found
     MOV AH,09H
     INT 21H
-    
+    CALL NEW LINE
     JMP LR
      
 
