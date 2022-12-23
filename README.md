@@ -14,6 +14,9 @@ The idea of binary search is to use the information that the array is sorted and
 - It indicates whether the element being searched is before or after the current position in the list.
 - This information is used to narrow the search.
 - For large lists of data, it works significantly better than linear search.
+# Complexity of Binary search algorithm
+- Time complexity - O(log nlogn)
+- Space complexity - O(1)
 # Binary-Search algorithm
 ![](BinarySearch.png)
 # Example
