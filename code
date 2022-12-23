@@ -71,50 +71,42 @@ MOV SIZE,AL
         CALL NEWLINE
         
         MOV number,0    
-loop_read_number:  MOV AH,01H  
-
-                   INT 21H  
-MOV BH,00
-MOV CL,KEY      ;put the key at CL
-MOV CH,0
-MOV SI,CX
-MOV AL,OCUR[SI] 
-MOV OCC,AL
-AGAIN:CMP BH,BL ;binary search
-JA FAIL         ;jump to fail
-MOV AL,BH
-ADD AL,BL
-SHR AL,1
-MOV AH,00
-MOV SI,AX
-
-CMP CL,ARR[SI]  ;compare the SIth element with CL
-
-JAE BIG
-DEC AL
-                                
-                   MOV BL,AL   
-
-                   MOV AL,number  
-                   MUL numberplace  
-             
-                   MOV BH,0       
-                   MOV AH,0
-                   ADD AX,BX
-                   CMP AH,0
-                   JNE overflow
- 
-          
-
-                   MOV number,AL
-                   CMP number,0
-                   JL overflow
+loop_read_number:  
+        MOV AH,01H  
+        INT 21H 
         
-                   JMP loop_read_number
+        CMP AL,0DH      ;compare AL with ASCII code of ENTER
+        JE numbercomplete
+        
+        CMP AL,30H      ;compare AL with ASCII code of zero             
+        JL invalidcharacter 
+     
+        CMP AL,39h      ;compare AL with ASCII code of 9
+        JG invalidcharacter 
+     
+        INC CX
+    
+        SUB AL,30h       ;subtract ASCII code of zero from AL                       
+        MOV BL,AL   
+
+        MOV AL,number
+        MUL numberplace  
+        MOV BH,0       
+        MOV AH,0
+        ADD AX,BX
+        CMP AH,0
+        JNE overflow
+ 
+        MOV number,AL
+        CMP number,0
+        JL overflow
+        
+        JMP loop_read_number
+
 overflow:
 
 
-
+//<<END ENTER LINE FUNCTION>>//
 //<<START PRINT LINE FUNCTION>>// 
 PRINT PROC     ;procedure to print a number     
 
