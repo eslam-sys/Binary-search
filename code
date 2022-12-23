@@ -189,7 +189,7 @@ FAIL:
     LEA DX,MSG2     ;key not found
     MOV AH,09H
     INT 21H
-    CALL NEW LINE
+    CALL NEWLINE
     JMP LR
      
 
