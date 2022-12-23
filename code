@@ -55,6 +55,35 @@ BEGIN:
     CALL NEWLINE
     MOV SIZE,AL
     MOV CL,0 
+    ;array elements begin
+ARR_LOOP: 
+
+    CMP CL,SIZE
+    
+    JE LR      ;all elements enterd
+
+
+    LEA DX,MSG4     ;display enter number msg 
+    MOV AH,09H
+    INT 21H
+    LEA DX,MSG4     ;display enter number msg 
+    MOV AH,09H
+    INT 21H
+
+    MOV AL,CL   ;mov cl to al
+    INC AL      ;increment AL by 1
+    MOV AH,0    ;set AH = 0
+    
+    CALL PRINT  ;call the print proc   
+    
+    LEA DX,MSG5 ;load effective address of msg5 to DX
+    MOV AH,09H
+    INT 21H
+    CALL ENTER      ;call it to enter the elements of the arr   ;000000000 
+    ;al = the number entered & number = number enterd
+    
+    CALL NEWLINE    ;call the new line proc
+    
 
 
 
