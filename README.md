@@ -13,7 +13,7 @@ The idea of binary search is to use the information that the array is sorted and
 ![](BinarySearch.png)
 ## Project Tools:
 - emu8086
-##Bugs we faced
+## Bugs we faced
 - Input size was taking from 0 to 9 only (one digit)
 - '-' or '+' signs was taken as array size without prompting errors.
 -
