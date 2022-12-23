@@ -14,6 +14,11 @@ The idea of binary search is to use the information that the array is sorted and
 - It indicates whether the element being searched is before or after the current position in the list.
 - This information is used to narrow the search.
 - For large lists of data, it works significantly better than linear search.
+- ## Disadvantages:
+- This algorithm does not work if the input_array is not in sorted order.
+- It employs recursive approach which requires more stack space.
+- Programming binary search algorithm is error prone and difficult.
+- The interaction of binary search with memory hierarchy i.e. caching is poor.
 # Complexity of Binary search algorithm
 - Time complexity - O(log nlogn)
 - Space complexity - O(1)
@@ -28,11 +33,6 @@ Let input_array = {12, 18, 23, 25, 29, 32, 35, 40, 58, 66}
 ## Bugs we faced
 - Input size was taking from 0 to 9 only (one digit)
 - '-' or '+' signs was taken as array size without prompting errors.
-## Disadvantages:
-- This algorithm does not work if the input_array is not in sorted order.
-- It employs recursive approach which requires more stack space.
-- Programming binary search algorithm is error prone and difficult.
-- The interaction of binary search with memory hierarchy i.e. caching is poor.
 # Resources:
 Reference :
 Assembly language for x86 processors sixth edition
