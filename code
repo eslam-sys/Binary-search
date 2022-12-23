@@ -83,6 +83,36 @@ ARR_LOOP:
     ;al = the number entered & number = number enterd
     
     CALL NEWLINE    ;call the new line proc
+    CMP AL,INDEX    ;compare the new intered element with the previos one
+    
+    JB NOTSORTED    ;if the new element is less than the old it prints nonsorted and make u enter it again  ;00000000 
+    
+    MOV INDEX,AL    ;after entering the new element it keeps its vvalue INDEX
+ 
+    MOV CH,0      
+    
+    MOV SI,CX 
+    
+    MOV ARR[SI],AL       ;add the number to the array
+    
+    INC CL
+       
+    MOV AH,0  
+      
+    MOV SI,AX 
+    
+    INC OCUR[SI]       ;increment the value of the index of the number
+    
+    JMP ARR_LOOP
+    NOTSORTED:
+        LEA DX,MSG7 ;load effective address to the dx
+        MOV AH,09H
+        INT 21H         ;fetch the instruction in 21h
+        CALL NEWLINE    ;print brake line
+        JMP ARR_LOOP    ;continue the loop    
+        
+    
+    
     
 
 
