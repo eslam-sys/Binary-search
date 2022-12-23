@@ -80,13 +80,13 @@ ARR_LOOP:
     MOV AH,09H
     INT 21H
     
-    CALL ENTER      ;call it to enter the elements of the arr   ;000000000 
+    CALL ENTER      ;call it to enter the elements of the arr   
     ;al = the number entered & number = number enterd
     
     CALL NEWLINE    ;call the new line proc
     CMP AL,INDEX    ;compare the new intered element with the previos one
     
-    JB NOTSORTED    ;if the new element is less than the old it prints nonsorted and make u enter it again  ;00000000 
+    JB NOTSORTED    ;if the new element is less than the old it prints nonsorted and make u enter it again  
     
     MOV INDEX,AL    ;after entering the new element it keeps its vvalue INDEX
  
@@ -183,7 +183,7 @@ SUCCESS:
     CALL NEWLINE 
  
 
-    JMP LR        ;jump to the end of the program
+    JMP LR        
 
 FAIL:
     LEA DX,MSG2     ;key not found
